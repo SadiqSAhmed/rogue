@@ -258,6 +258,7 @@ int
 md_hasclreol()
 {
 #if defined(clr_eol)
+#if defined(CE)
 #ifdef NCURSES_VERSION
     if (cur_term == NULL)
 	return(0);
@@ -694,6 +695,7 @@ md_getpass(char *prompt)
 int
 md_erasechar()
 {
+#if defined(_tty)
 #ifdef HAVE_ERASECHAR
     return( erasechar() ); /* process erase character */
 #elif defined(VERASE)
@@ -706,6 +708,7 @@ md_erasechar()
 int
 md_killchar()
 {
+#if defined(_tty)
 #ifdef HAVE_KILLCHAR
     return( killchar() );
 #elif defined(VKILL)
